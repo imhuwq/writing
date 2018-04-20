@@ -90,7 +90,8 @@ UnboundLocalError: local variable 'test_number' referenced before assignment
 
 但其实上面的逻辑有错误。
 >`test_function` 作用域内还没有对 `test_number` 的定义...后来 `test_number = 2` 只是
-在函数作用域内部修改了 `test_number`
+在函数作用域内部修改了 `test_number`  
+
 `test_number = 2` 到底是对函数内部 `test_number` 的赋值还是定义? 如果是定义， 之前的
 `print(test_number)` 中的 `test_number` 是什么意思？要知道当时它都还没有被定义。
 而如果是赋值， 那它是什么时候定义的？
