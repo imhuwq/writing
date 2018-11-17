@@ -1,9 +1,18 @@
-# 对 ANS 算法的简单介绍
+---
+title: 对 ANS 算法的简单介绍
+date: 2018-11-17 23:49:37
+categories:
+- 技术
+tags: 
+- 压缩算法
+---
+
 ANS 算法来自于  Jagiellonian University 的 Jarek Duda 在 2014 年发表的一篇论文：`Asymmetric numeral systems:
 entropy coding combining speed of Huffman coding with compression rate of arithmetic coding`。  
 从标题来看，ANS 算法是一个既有 AC 算法的压缩率又有 Huffman 算法的压缩速度的无损压缩算法。  
 我一直负责公司 3D 方向的各种技术调研和落地，最近则致力于减少 3D 模型文件的体积以优化用户在移动端的加载时间。通过使用 ANS 压缩算法，我们的模型体积减小到了上一代模型格式的 25%。  
 在体验到 ANS 的巨大威力后，我实在按捺不住自己的好奇心，想去探究一下它的基本原理。  
+<!-- more -->
 
 ## 一. ANS 理论基础：香农熵
 ANS 算法也是一种熵(Entropy)压缩算法，其理论基础来自于香农的信息熵理论。  
