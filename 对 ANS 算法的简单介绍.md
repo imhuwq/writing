@@ -10,7 +10,7 @@ tags:
 ANS 算法来自于  Jagiellonian University 的 Jarek Duda 在 2014 年发表的一篇论文：`Asymmetric numeral systems:
 entropy coding combining speed of Huffman coding with compression rate of arithmetic coding`。  
 从标题来看，ANS 算法是一个既有 AC 算法的压缩率又有 Huffman 算法的压缩速度的无损压缩算法。  
-我一直负责公司 3D 方向的各种技术调研和落地，最近则致力于减少 3D 模型文件的体积以优化用户在移动端的加载时间。通过使用 ANS 压缩算法，我们的模型体积减小到了上一代模型格式的 25%。  
+在公司我一直负责 3D 方向的各种技术调研和落地，最近一直在研究怎么减少 3D 模型文件的体积，以优化用户在移动端的加载时间。通过使用 ANS 压缩算法，我把模型体积减小到了上一代模型格式的 25%。  
 在体验到 ANS 的巨大威力后，我实在按捺不住自己的好奇心，想去探究一下它的基本原理。  
 <!-- more -->
 
