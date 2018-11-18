@@ -8,11 +8,11 @@ tags:
 - ANS
 - 熵编码
 ---
-ANS 算法来自于  Jagiellonian University 的 Jarek Duda 在 2014 年发表的一篇论文：`Asymmetric numeral systems:
-entropy coding combining speed of Huffman coding with compression rate of arithmetic coding`。  
-从标题来看，ANS 算法是一个既有 AC 算法的压缩率又有 Huffman 算法的压缩速度的无损压缩算法。  
-在公司我一直负责 3D 方向的各种技术调研和落地，最近一直在研究怎么减少 3D 模型文件的体积，以优化用户在移动端的加载时间。通过使用 ANS 压缩算法，我把模型体积减小到了上一代模型格式的 25%。  
-在体验到 ANS 的巨大威力后，我实在按捺不住自己的好奇心，想去探究一下它的基本原理。  
+
+ANS 算法来自于 Jagiellonian University 的 Jarek Duda 在 2014 年发表的一篇论文：Asymmetric numeral systems: entropy coding combining speed of Huffman coding with compression rate of arithmetic coding。  
+从标题来看，ANS 算法是一个既有 AC 算法的压缩率又有 Huffman 算法的压缩速度的无损压缩算法。我最近一直在研究怎么优化用户在移动端加载 3D 模型的体验。如果 ANS 算法所言非虚，那么我就可以通过不多的 CPU 资源(解压时间)来换大量的流量资源(下载时间)。  
+事实证明 ANS 算法确实很厉害，在权衡流量和 CPU 资源后，我们使用 ANS 把模型体积压缩到了上一代模型格式的 25%。
+在体验到 ANS 的巨大威力后，我实在按捺不住自己的好奇心，想去探究一下它的基本原理。 
 <!-- more -->
 
 ## 一. ANS 理论基础：香农熵
