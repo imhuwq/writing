@@ -8,7 +8,6 @@ tags:
 - ANS
 - 熵编码
 ---
-
 ANS 算法来自于  Jagiellonian University 的 Jarek Duda 在 2014 年发表的一篇论文：`Asymmetric numeral systems:
 entropy coding combining speed of Huffman coding with compression rate of arithmetic coding`。  
 从标题来看，ANS 算法是一个既有 AC 算法的压缩率又有 Huffman 算法的压缩速度的无损压缩算法。  
@@ -69,13 +68,13 @@ uABS 中，x 的初始值是 1，包含 $log_2(1) = 0$ 比特的信息。
 假如我们要压缩的消息为 `"0111"`, 则 $x = 1 (+0) = 4 (+1) = 6 (+1) 9 (+1) = 13 = binsry(1101)$
 至于如何找到这样的压缩和解压方程，里面涉及比较多的数学过程，我就不再细述，以下是结果。
 假定 s 为 `0` 或者 `1`，$p_1$ 为 `1` 出现的概率。则解压过程为：  
-> $s = ceil((x' + 1) * p_1) - ceil(x' * p_1)$  
-> $s = 1: x = ceil(x' * p_1)$   
-> $s = 0 : x = x' - ceil(x' * p_1)$  
+> $s = \lceil (x' + 1) * p_1 \rceil - \lceil x' * p_1 \rceil$  
+> $s = 1: x = \lceil x' * p_1 \rceil$   
+> $s = 0 : x = x' - \lceil x' * p_1 \rceil$  
 
 压缩过程为: 
-> $s = 1 : x' = floor(\frac{x}{p_1})$  
-> $s = 0 : x' = ceil(\frac{x+1}{1-p_1}) - 1$ 
+> $s = 1 : x' = \lfloor \frac{x}{p_1} \rfloor$  
+> $s = 0 : x' = \lceil \frac{x+1}{1-p_1} \rceil - 1$ 
 
 ## 四. ANS 的实现之 rANS：为字符表设计
 rANS 可以压缩 Range Variants, 即一系列符号，而不仅仅只是 `0` 和 `1` 两个符号。  
@@ -88,7 +87,7 @@ rANS 可以压缩 Range Variants, 即一系列符号，而不仅仅只是 `0` �
 > $CDF[s] <= y < CDF[s+1]: symbol(y) = s$
 
 于是压缩过程为：
-> $x' = (floor(\frac{x}{f[s]}) << n) + (x \% f[s]) + CDF[s]$
+> $x' = (\lfloor \frac{x}{f[s]} \rfloor << n) + (x \% f[s]) + CDF[s]$
 
 解压过程为：
 > $mask = 2^n -1$  
@@ -99,3 +98,4 @@ rANS 可以压缩 Range Variants, 即一系列符号，而不仅仅只是 `0` �
 
 ## 五. 总结
 ANS 算法基于香农熵理论“信息程度与熵呈正相关”以及“平均 1 比特信息要 1 比特消息存储”，推理出 $x' ≈ \frac{x}{p_s}$ 的约等式。再根据“x 比特信息量等于从 x 物体选 1 的信息量” 联想到 “x' 为 第 x 个 s”，从而依靠概率分布表实现在一个数字 x' 中同时保存 x 和 s 的信息。因此，它有 AC 算法的压缩率，但是比它快(只需要一个 x 记录所有信息，AC 要两个)。它也有 Huffman 的速度，但是比它快(它可能以小数点个比特来记录新信息，Huffman 必须是整数个)。
+
