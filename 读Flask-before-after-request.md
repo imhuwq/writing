@@ -7,6 +7,7 @@ tags:
 - python
 - web 开发
 - flask
+- imhuwq
 ---
 
 Flask中可以使用`@before_request`等装饰器来注册一些函数，这些函数会在view_func之前被执行，通常可以用来做数据库初始化等操作。  

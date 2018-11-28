@@ -5,8 +5,11 @@ categories:
 - 技术
 tags: 
 - 压缩算法
-- ANS
+- ANS 算法
 - 熵编码
+- uABS
+- rANS
+- imhuwq
 ---
 
 ANS 算法来自于 Jagiellonian University 的 Jarek Duda 在 2014 年发表的一篇论文：Asymmetric numeral systems: entropy coding combining speed of Huffman coding with compression rate of arithmetic coding。  

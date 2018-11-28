@@ -7,6 +7,7 @@ tags:
 - python
 - web 开发
 - flask
+- imhuwq
 ---
 
 `app.wsgi_app` 是Flask实例的入口，Flask从这里接受数据，返回处理后的数据。  

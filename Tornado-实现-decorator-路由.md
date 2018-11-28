@@ -7,6 +7,7 @@ tags:
 - python
 - web 开发
 - tornado
+- imhuwq
 ---
 
 我也实现了一个 Flask decorator 风格的 Tornado 路由，实现的方式极大地参考了 Flask 的过程(add_url_rule 和 Blueprint)。   
