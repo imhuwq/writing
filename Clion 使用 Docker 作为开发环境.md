@@ -125,10 +125,10 @@ networks:
 Clion 本身就支持 SSH 到远程服务器作为开发环境，也支持使用 GDB 进行远程调试，所以主要是怎么对 Clion 进行设置。  
 首先我们把 Docker Container 跑起来： 
 
-```shell
+```bash
 docker-compose build
 docker-compose up -d
-```  
+```
 
 在 Clion `Settings-Build,Execution,Deployment-Toolchains` 页面先新建一个 Toolchains 设置，名字叫 **my-project** 吧，类型选 **Remote Host**。 Credential 设置里面填入 Container 的 IP， 如果使用上述的 docker-compose.yml 来启动 Container 的话，IP 一般是 `172.129.2.2`。端口、用户名和密码按自己创建 Docker 镜像的时候来设置。由于我是从源码编译的 Cmake，所以需要变更一下 Cmake 地址为 `/usr/local/bin/cmake`。大家自己会意，按情况来改就好。  
 ![添加 ToolChain](http://static-public-imhuwq.oss-cn-shenzhen.aliyuncs.com/writing/clion-using-docker-as-dev-env/1.png)
@@ -157,13 +157,13 @@ docker-compose up -d
 
 然后在 Container 里面启动 GDB Server：  
 
-```shell
+```bash
 gdbserver :1234 cmake-build-debug/my_project_exec arg1 arg2 arg_etc
 ```
 这里其实就是在 Container 里面运行构建的程序，并且把参数也一并输入。  
 执行后，会有类似的输出：   
 
-```shell
+```bash
 Process cmake-build-debug/my_project_exec created; pid = 7252
 Listening on port 1234
 Remote debugging from host 172.129.2.2
@@ -172,7 +172,8 @@ Remote debugging from host 172.129.2.2
 这时候，从 Clion 右上角的 **RUN/Debug Configurations** 下拉菜单中选择 **my-project**， 然后点击 Debug 的 Icon 就能像往常一样进行 Debug 了。
 
 ## 三. 进一步优化
-对于一些很常见的操作，我们可以写出一个 Shell 脚本：   
+对于一些很常见的操作，我们可以写出一个 Shell 脚本：  
+
 ```bash
 #!/usr/bin/env bash
 # docker.sh 
@@ -193,6 +194,7 @@ elif [ $action = "debug" ]; then
 fi
 
 ```
+
 如此，我们想要 Debug 的话，只需要执行 `./docker.sh debug arg1 arg2 arg_etc` 就好了， 方便很多。
 
 
