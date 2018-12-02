@@ -130,22 +130,23 @@ docker-compose build
 docker-compose up -d
 ```
 
-在 Clion `Settings-Build,Execution,Deployment-Toolchains` 页面先新建一个 Toolchains 设置，名字叫 **my-project** 吧，类型选 **Remote Host**。 Credential 设置里面填入 Container 的 IP， 如果使用上述的 docker-compose.yml 来启动 Container 的话，IP 一般是 `172.129.2.2`。端口、用户名和密码按自己创建 Docker 镜像的时候来设置。由于我是从源码编译的 Cmake，所以需要变更一下 Cmake 地址为 `/usr/local/bin/cmake`。大家自己会意，按情况来改就好。  
+在 Clion `Settings-Build,Execution,Deployment-Toolchains` 页面先新建一个 Toolchains 设置，名字叫 **my-project** 吧，类型选 **Remote Host**。 Credential 设置里面填入 Container 的 IP， 如果使用上述的 docker-compose.yml 来启动 Container 的话，IP 一般是 `172.129.2.2`。端口、用户名和密码按自己创建 Docker 镜像的时候来设置。由于我是从源码编译的 Cmake，所以需要变更一下 Cmake 地址为 `/usr/local/bin/cmake`。大家自己会意，按情况来改就好:  
 ![添加 ToolChain](http://static-public-imhuwq.oss-cn-shenzhen.aliyuncs.com/writing/clion-using-docker-as-dev-env/1.png)
 
-创建 Toolchains 配置后，在 `Settings-Build,Execution,Deployment-CMake` 页面的 **Toolchain** 下拉菜单里面选择刚才创建的 `my-project`。 然后点击 **Apply** 保存到目前为止的配置。
+创建 Toolchains 配置后，在 `Settings-Build,Execution,Deployment-CMake` 页面的 **Toolchain** 下拉菜单里面选择刚才创建的 `my-project`。 然后点击 **Apply** 保存到目前为止的配置:  
 ![使用 ToolChain](http://static-public-imhuwq.oss-cn-shenzhen.aliyuncs.com/writing/clion-using-docker-as-dev-env/2.png)
 
 由于我们使用 Docker 的 Volume 进行文件同步，所以不再需要使用 Clion 的 SFTP 了。这个可以在 `Settings-Build,Execution,Deployment-Deployment` 里面进行更改。  
 当 Clion 成功连接到 Container 后，会自动创建一个对应于 ToolChain 名字的 Deployment 配置。我们需要对它进行微调， 把本地代码目录(比如说 `/home/john/git/github/my-project`) Map 到 Container 里面的工作目录 `/home/deploy/my-project`，然后禁用 Clion 使用 SFTP 对 Container 里面的工作目录进行同步。   
+
+默认 Connection 配置不用更改:  
 ![对应 ToolChain 的 Deployment 配置](http://static-public-imhuwq.oss-cn-shenzhen.aliyuncs.com/writing/clion-using-docker-as-dev-env/3.png)
-默认 Connection 配置不用更改。  
 
+把本地 `/home/john/git/github/my-project` 映射到 Container 里面的 `/home/deploy/my-project`:  
 ![调整 Mappings](http://static-public-imhuwq.oss-cn-shenzhen.aliyuncs.com/writing/clion-using-docker-as-dev-env/4.png)
-把本地 `/home/john/git/github/my-project` 映射到 Container 里面的 `/home/deploy/my-project`。  
 
+在添加 Exclude Path 的时候，类型选 SFTP，并设置为 Container 里面的 `/home/deploy/my-project`:  
 ![调整 Exclude Paths](http://static-public-imhuwq.oss-cn-shenzhen.aliyuncs.com/writing/clion-using-docker-as-dev-env/5.png)
-在添加 Exclude Path 的时候，类型选 SFTP，并设置为 Container 里面的 `/home/deploy/my-project`。  
 
 这样我们就直接使用 Docker Volume 进行实时的文件同步了，比 SFTP 更方便。  
 
