@@ -136,7 +136,6 @@ docker-compose up -d
 创建 Toolchains 配置后，在 `Settings-Build,Execution,Deployment-CMake` 页面的 **Toolchain** 下拉菜单里面选择刚才创建的 `my-project`。 然后点击 **Apply** 保存到目前为止的配置。
 ![使用 ToolChain](http://static-public-imhuwq.oss-cn-shenzhen.aliyuncs.com/writing/clion-using-docker-as-dev-env/2.png)
 
-此时 Clion 会
 由于我们使用 Docker 的 Volume 进行文件同步，所以不再需要使用 Clion 的 SFTP 了。这个可以在 `Settings-Build,Execution,Deployment-Deployment` 里面进行更改。  
 当 Clion 成功连接到 Container 后，会自动创建一个对应于 ToolChain 名字的 Deployment 配置。我们需要对它进行微调， 把本地代码目录(比如说 `/home/john/git/github/my-project`) Map 到 Container 里面的工作目录 `/home/deploy/my-project`，然后禁用 Clion 使用 SFTP 对 Container 里面的工作目录进行同步。   
 ![对应 ToolChain 的 Deployment 配置](http://static-public-imhuwq.oss-cn-shenzhen.aliyuncs.com/writing/clion-using-docker-as-dev-env/3.png)
