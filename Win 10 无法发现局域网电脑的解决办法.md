@@ -14,6 +14,8 @@ tags:
 - 如果要使用远程桌面，必须允许远程访问计算机，让 Cortana 找出来“**必须允许远程访问计算机**”
 - 如果要使用文件共享，必须在 “启用或关闭Windows功能” 中启用 **SMB**，让 Cortana 找出来“**启用或关闭Windows功能**”
 - 让 Cortana 找出“**服务**”，设置以下服务自动开启：
+  - PNRP Machine Name Publication Service
+  - TCP/IP NetBIOS Helper
   - Computer Browser（Browser）
   - unction Discovery host Provider（FDPHOST）
   - Function Discovery Resouce  Publication(FDResPub）
