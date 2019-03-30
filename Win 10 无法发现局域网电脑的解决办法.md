@@ -17,7 +17,7 @@ tags:
   - PNRP Machine Name Publication Service
   - TCP/IP NetBIOS Helper
   - Computer Browser（Browser）
-  - unction Discovery host Provider（FDPHOST）
+  - Function Discovery host Provider（FDPHOST）
   - Function Discovery Resouce  Publication(FDResPub）
   - Network Connections（NetMan）
   - Upnp Device Host（UpnpHost）
