@@ -2,7 +2,7 @@
 title: Clion 如何使用 Docker 作为开发环境
 date: 2018-12-02 18:18:00
 categories:
-- 技术
+- Tips
 tags: 
 - c++
 - clion
