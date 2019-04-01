@@ -7,7 +7,6 @@ tags:
 - python
 - web 开发
 - flask
-- imhuwq
 ---
 
 Flask 的 Blueprint 本质上是一个记录了一系列动作的类, 当 flask app 执行 `app.register_blueprint` 的时候把这些动作一股脑的全部倒入到 app 这个容器中去.  

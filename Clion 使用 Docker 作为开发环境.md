@@ -7,7 +7,6 @@ tags:
 - c++
 - clion
 - docker
-- imhuwq
 ---
 
 有时候你可能想用 Docker 作为 C++ 项目的开发环境，就像 Python 用 Pyenv 作为开发环境一样。  

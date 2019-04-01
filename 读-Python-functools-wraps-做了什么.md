@@ -5,7 +5,6 @@ categories:
 - 技术
 tags:
 - python
-- imhuwq
 ---
 
 Python 标准库 functools 里面的 `wraps` 装饰器经常用于写装饰器，之前只知道它可以用来保留被装饰函数的元数据，但具体实现的方式和究竟保留了哪些数据都不清楚。最近看 Flask 源码时读到一行代码 `return self.record(update_wrapper(wrapper, func))`。 稍微看了一下原来 `@wraps(func)` 其实就是调用了 `update_wrapper` 这个函数，于是索性看个明白。

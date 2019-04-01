@@ -7,7 +7,6 @@ tags:
 - python
 - web 开发
 - flask
-- imhuwq
 ---
 
 追本朔源弄清楚`@app.route`后面到底发生了什么。  

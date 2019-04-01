@@ -6,7 +6,6 @@ categories:
 tags:
 - python
 - c++
-- imhuwq
 ---
 
 在本章我们会用 C 实现一个简单的的 Python 内置模块， 以了解用 C/C++ 拓展 Python 时的核心的组件和基本流程。  

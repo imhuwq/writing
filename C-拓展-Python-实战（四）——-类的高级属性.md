@@ -6,7 +6,6 @@ categories:
 tags:
 - c++
 - python
-- imhuwq
 ---
 
 在之前的示例中我们使用了大量的 `Py_INCREF` 和 `Py_DECREF` 来管理 Python Object 的引用计数。 `Empty` 的 `value_setter` 里也使用了一种非常啰嗦的语法:

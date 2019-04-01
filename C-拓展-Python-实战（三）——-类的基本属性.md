@@ -6,7 +6,6 @@ categories:
 tags:
 - c++
 - python
-- imhuwq
 ---
 
 我们将用两章探索如何实现内置的 Python 类，并尝试去了解一些 Python 编程语言的底层实现。  

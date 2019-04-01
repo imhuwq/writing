@@ -7,7 +7,6 @@ tags:
 - python
 - web 开发
 - flask
-- imhuwq
 ---
 
 Flask只是一个python web框架，框架和server之间的数据交流，都是基于PEP3333所规范的WSGI， server调用framwork的某个callable进行数据交流。  这个callable， 可以是定义了`__call__`方法的类，或者任何函数等。  

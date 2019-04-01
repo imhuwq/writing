@@ -7,7 +7,6 @@ tags:
 - python
 - web 开发
 - flask
-- imhuwq
 ---
 
 之前读到 `app.route` 实际上是调用 `add_url_rule` 函数，主要做了两件事:  
