@@ -132,7 +132,7 @@ int main() {
     C12 c12;
     C12::DisplayLayout(&c12);
 }
-```  
+```
 
 输出：  
 ```
@@ -144,7 +144,7 @@ C1                  ::&obj->c1.bit1_      : 000005(~0001) 0x7ffd037d36d5
 C1                  ::&obj->c1.bit1_2_    : 000006(~0001) 0x7ffd037d36d6
 C2                  ::&obj->c2.bit2       : 000008(~0001) 0x7ffd037d36d8
 ==========
-```  
+```
 
 当然，大家都是接受过良好 C 编程基础教育的人，没有人会天真地以为在 C12 中 C2 会直接使用 C1 padding 的那一个 bit：  
 ![Padding-C12-Layout](https://static-public-imhuwq.oss-cn-shenzhen.aliyuncs.com/writing/cpp-object-model/padding_c12-layout.png)  
@@ -188,7 +188,7 @@ int main() {
     C2 c2;
     C2::DisplayLayout(&c2);
 }
-```  
+```
 
 输出：  
 ```
@@ -198,7 +198,7 @@ C1                  ::&obj->val1          : 000000(~0008) 0x7ffdb7886820
 C1                  ::&obj->bit1          : 000008(~0001) 0x7ffdb7886828
 C2                  ::&obj->bit2          : 000016(~0001) 0x7ffdb7886830
 ==========
-```  
+```
 
 “嗯...”，你看着这个结果，尽量保持着沉思的姿态，好像一副还在谨慎地考虑某种未知情况，虽然你在心里面已经认为万事大吉了。你说，“我们可以考虑再多一层继承的情况”：  
 ![Padding-C1-C2-C3-Declaration-Layout](https://static-public-imhuwq.oss-cn-shenzhen.aliyuncs.com/writing/cpp-object-model/padding_c1_c2_c3-declaration-layout.png)  
@@ -234,7 +234,7 @@ int main() {
     C3 c3;
     C3::DisplayLayout(&c3);
 }
-```  
+```
 
 输出：  
 ```
@@ -245,7 +245,7 @@ C1                  ::&obj->bit1          : 000008(~0001) 0x7ffcccc50598
 C2                  ::&obj->bit2          : 000016(~0001) 0x7ffcccc505a0
 C3                  ::&obj->bit3          : 000017(~0001) 0x7ffcccc505a1
 ==========
-```  
+```
 其图片展示如下：  
 ![Padding-C1-C2-C3-Layout](https://static-public-imhuwq.oss-cn-shenzhen.aliyuncs.com/writing/cpp-object-model/padding_c1_c2_c3-layout.png)  
 
@@ -312,7 +312,7 @@ int main() {
     C3 c3;
     C3::DisplayLayout(&c3);
 }
-```  
+```
 
 输出为：  
 ```
