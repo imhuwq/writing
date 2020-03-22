@@ -10,7 +10,7 @@ tags:
 
 这是我的《C 拓展 Python 实战》系列的第五篇，也是这个系列最后一篇。  
 在之前的文章中，我们的模块需要和 Python 一起编译，这次我们来看看如何使用 setup.py 来随时编译我们的模块。  
-在此之上，我们再来看看如何结合 CMake 来把复杂的 C/C++ 项目打包成 Python Package。  
+在此之上，我们再来看看如何结合 CMake 把复杂的 C/C++ 项目打包成 Python Package。  
 <!-- more -->
 
 ## 一、使用 setup.py 来打包 C/C++ 模块为 Python Package
@@ -141,11 +141,12 @@ include_directories(${INCLUDES})
 add_library(mymath SHARED ${SOURCES})
 target_link_libraries(mymath PUBLIC ${LIBRARIES})
 
-set_target_properties(mymath PROPERTIES OUTPUT_NAME "mymath" PREFIX "")  # 这一行非常重要，作用是取消编译出的库文件的 ‘lib’ 前缀，这样 python 编译器才能找到这个包
+# 这一行非常重要，作用是取消编译出的库文件的 ‘lib’ 前缀，这样 python 才能找到这个包
+set_target_properties(mymath PROPERTIES OUTPUT_NAME "mymath" PREFIX "")
 
 ```
 
-这个 `CMakeLists.txt` 文件虽小，但是五脏俱全。尤其需要注意最后一行，当时我在这里卡了很久。  
+这个 `CMakeLists.txt` 文件虽小但是五脏俱全。尤其需要注意最后一行，当时我在这里卡了很久。  
 
 接下来对 `setup.py` 进行修改，让它能够根据 CMake 进行编译：
 
