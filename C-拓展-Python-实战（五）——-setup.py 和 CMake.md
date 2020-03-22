@@ -60,8 +60,8 @@ PyMODINIT_FUNC PyInit_mymath(void) {
 最关键的部分在 `setup.py`，安装时所有的依赖和行为都在这里定义：
 
 ``` python
-from distutils.core import setup
-from distutils.core import Extension
+from setuptools import setup
+from setuptools import Extension
 
 mymath = Extension("mymath",
                    sources=["mymath/mymath.c"],
@@ -238,3 +238,8 @@ C 项目除了在 CMake 中删除输出文件的 ‘lib’ 前缀，几乎不用
 写代码时继续用 CMake 来组织程序，发布时再使用 `setup.py` 轻轻松松地打包成 Python Package，美滋滋～  
 
 虽然文章中用的实例非常简单，但是这种解决方案完全适用大型的 C 程序。更多的细节可以参考我的项目 [font2png](https://github.com/imhuwq/font2png)，它使用强大而复杂的 fontforge 开源库把字体文件转换为 png 图片。在这个项目中，fontforge 的模块就全部是通过 `setup.py` 来编译的。  
+
+
+### 引用
+1. [Building C and C++ Extensions with distutils](https://docs.python.org/3.6/extending/building.html#building-c-and-c-extensions-with-distutils)
+2. [Extending setuptools extension to use CMake in setup.py?](https://stackoverflow.com/questions/42585210/extending-setuptools-extension-to-use-cmake-in-setup-py)
