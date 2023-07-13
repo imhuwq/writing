@@ -63,7 +63,7 @@ tags:
 简而言之，对开源著作权所有人而言，CLA 更有利；对贡献者而言，DCO 更有利。
 可以参考：[为自己的开源项目建立贡献准则](https://oschina.gitee.io/opensource-guide/guide/%E7%AC%AC%E5%9B%9B%E9%83%A8%E5%88%86%EF%BC%9A%E5%90%AF%E5%8A%A8%E8%87%AA%E5%B7%B1%E7%9A%84%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/%E7%AC%AC%204%20%E5%B0%8F%E8%8A%82%EF%BC%9A%E4%B8%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E5%BB%BA%E7%AB%8B%E8%B4%A1%E7%8C%AE%E5%87%86%E5%88%99/#cla)
 
-## 七. 一些开源相关的司法案例
+## 五. 一些开源相关的司法案例
 - [国内涉开源协议典型案例分析](https://www.163.com/dy/article/H4U76DEE05149FJG.html)
 - [GPL协议中国第一案尘埃落定，相关开源软件应如何风控？](https://zhuanlan.zhihu.com/p/101206609)
 
