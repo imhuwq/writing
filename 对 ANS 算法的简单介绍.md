@@ -1,6 +1,7 @@
 ---
 title: 对 ANS 算法的简单介绍
 date: 2018-11-17 23:49:37
+math: true
 categories:
 - 技术
 tags: 
