@@ -9,20 +9,21 @@ tags:
 - 学习笔记
 ---
 
-This is the notes of the second chapter of the book *Python Machine Learning*.  
-In this chapter, three linear classification algorithms with detailed explanation and python implementation are taught. 
+
+This is the notes of the second chapter of the book *Python Machine Learning*.  
+In this chapter, three linear classification algorithms with detailed explanation and python implementation are taught.
 - perceptron classification
 - adaline with batch gradient descent
 - adaline with stochastic gradient descent
-
 <!-- more -->
+
 ## 1. Perceptron Classification
 ### 1.1 Main Concepts
 - All features affects the output linearly with respective weights
 - The training goal is to find proper weights that minimize the sum of samples' errors
 - The training process is to update weights on every example:
-	- compute predict value $y^{i}$:
-       $$
+  - compute predict value $y^{i}$:
+$$
 	\begin{aligned}
 		p^i &= X[i].dot(W[1:]) + W[0]\\
 		y^{i} &= \begin{cases}
@@ -30,20 +31,21 @@ In this chapter, three linear classification algorithms with detailed explanatio
 				-1, &p^i \lt 0
 			   \end{cases}
 	\end{aligned}
-	
-	$$
+$$
 
-	- update the weights according to error $e^i$ and learning rate $\alpha$:
-	 $$
+
+  - update the weights according to error $e^i$ and learning rate $\alpha$:
+$$
 	\begin{aligned}
 		e^i &= Y^i - y^i\\
 		W &= W + \alpha e^i
 	\end{aligned}
-	$$
-	- here is why the updation works:
-		- if $e^i = 0$, then $w^i$ gets no updation;
-		- if $e^i \gt 0$, which means $y^i \lt Y^i$, then $w^i$ is increased by $\alpha e^i x^i$, making the predict $p^i$ closer to $Y^i$ next time we encounter the same example, because $x^i w^i$ is becoming more positive;
-		- if $e^i \lt 0$, which means $y^i \gt Y^i$, then $w^i$ is decreased by $\alpha e^i x^i$, making the predict $p^i$ closer to $Y^i$ next time we encounter the same example, because $x^i w^i$ is becoming more negative.
+$$
+
+  - here is why the updation works:
+    - if $e^i = 0$, then $w^i$ gets no updation;
+    - if $e^i \gt 0$, which means $y^i \lt Y^i$, then $w^i$ is increased by $\alpha e^i x^i$, making the predict $p^i$ closer to $Y^i$ next time we encounter the same example, because $x^i w^i$ is becoming more positive;
+   - if $e^i \lt 0$, which means $y^i \gt Y^i$, then $w^i$ is decreased by $\alpha e^i x^i$, making the predict $p^i$ closer to $Y^i$ next time we encounter the same example, because $x^i w^i$ is becoming more negative.
 - The trainning process stops after n epoches.
 
 ### 1.2 Python Implementation
@@ -95,10 +97,10 @@ class Perceptron:
 - All features affects the output linearly with respective weights
 - The training goal is to find the $W$ that minimize the output of cost function $J(W) = \frac{1}{2}\sum_{i=1}^{n}(Y[i] - X[i] \cdot W)^2$ 
 - The training process is to update weights on every iteration of the whole dataset:
-	- We assume that $J(W)$ is minimized if $J(w)$ is minimized for every $w$ in $W$;
-	- To minimize $J(w)$, we constantly decrease $w$ by grediant descent of $J(w)$, untill we hit the global minimun;
-	- To compute the gradient , we need to compute the partial derivative of the cost function with respect to each weight $w$ :
-	 $$
+  - We assume that $J(W)$ is minimized if $J(w)$ is minimized for every $w$ in $W$;
+  - To minimize $J(w)$, we constantly decrease $w$ by grediant descent of $J(w)$, untill we hit the global minimun;
+  - To compute the gradient , we need to compute the partial derivative of the cost function with respect to each weight $w$ :
+$$
 	\begin{aligned}
 	J(W) &= \frac{1}{2}\sum_{i=1}^{n}(Y[i]-X[i] \cdot W)^2\\
 	\frac{\partial J}{\partial w_j} &= \frac{\partial}{\partial w_j}\frac{1}{2}\sum_{i=1}^{n}(Y[i] - X[i] \cdot W)^2\\
@@ -106,7 +108,8 @@ class Perceptron:
 	&=\sum_{i=1}^{n}(Y[i] - X[i] \cdot W) \cdot -x_j^i\\
 	&=-\sum_{i=1}^{n}(Y[i] - X[i] \cdot W) \cdot x_j^i
 	\end{aligned}
-	$$
+$$
+
 ### 2.2 Python Implementation
 ```python
 import numpy as np
@@ -199,3 +202,4 @@ class AdalineSGD:
             self.costs.append(cost)
 
 ```
+
