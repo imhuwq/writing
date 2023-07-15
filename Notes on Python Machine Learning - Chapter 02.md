@@ -1,6 +1,6 @@
 ---
 title: Notes on Python Machine Learning - Chapter 02
-date: 2023-07-15 18:07:00
+date: 2023-07-15 18:22:00
 math: true
 categories:
 - 笔记
