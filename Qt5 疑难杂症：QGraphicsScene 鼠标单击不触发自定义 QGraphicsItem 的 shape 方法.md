@@ -6,7 +6,7 @@ categories:
 tags:
   - Qt5
   - 桌面端开发
-  - C++
+  - c++
 ---
 
 `QGraphicsScene::items` and `QGraphicsScene::itemAt` does not return clicked item of customized class `class Item: public QGraphicsTextItem` even thought `Item::shape` and `Item::boundingRect` method has been overriden properly and `Item::mouseHoverEnter` works with customized `shape`.
