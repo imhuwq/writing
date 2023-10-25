@@ -40,29 +40,29 @@ AI 程序 = 加密模型 + 加密“解密逻辑” + (加密)推理逻辑
 
 为了实现以上目的，通常有两种思路：
 - 静态破解，逆向程序代码，从中获取解密逻辑(和解密密钥)
-	- 相当于破解银行卡密码，自己从里面取钱
-	- 常用手段有：
-		- 代码分析
-		- `so` 二进制文件逆向
+    - 相当于破解银行卡密码，自己从里面取钱
+    - 常用手段有：
+        - 代码分析
+        - `so` 二进制文件逆向
 - 动态破解，在程序运行时，干扰关键逻辑，从而绕过加密逻辑的保护
-	- 相当于伪装成骗子商户，拦截用户的付款
-	- 常用手段有：
-		- hook python import
-		- 替换 python interpreter
-		- 拦截系统动态链接
-		- 内存修改和 dump
-		- 伪造硬件信息/系统时间
+    - 相当于伪装成骗子商户，拦截用户的付款
+    - 常用手段有：
+        - hook python import
+        - 替换 python interpreter
+        - 拦截系统动态链接
+        - 内存修改和 dump
+        - 伪造硬件信息/系统时间
 
 ## 2. 程序加密的应对手段
 程序加密的手段，主要是提高上述两种程序破解思路的门槛。  
 并且只能是提高门槛，而不能理论上永远杜绝被破解的可能性。
 
 - 应对静态破解
-	- 代码混淆(降低可读性)
-	- 代码编译(从明文代码编译为汇编指令)
-	- 动态代码生成(在运行时再生成代码，不留下可分析的文件)
+    - 代码混淆(降低可读性)
+    - 代码编译(从明文代码编译为汇编指令)
+    - 动态代码生成(在运行时再生成代码，不留下可分析的文件)
 - 应对动态破解
-	- 独立实现核心逻辑，并进行加密
+    - 独立实现核心逻辑，并进行加密
 
 下面会对各种加密手段进行分析。
 而为了量化各种方案的利弊，首先需要从实现成本和保护力度两方面设立评价指标。
@@ -115,10 +115,10 @@ def encrypt_bytes(plain_bytes: bytes, enc_key: str):
 
 
 def save_encrypted(save_path: str, enc_key: str):
-	"""
-	使用 enc_key 把模型 state dict 加密，然后把加密后的二进制字节保存到 save_path。
-	"""
-	enc_key = "k6oRK5yvag4mWTKrh_e3qNvpRYYLozThjK6V5yLhCmk="
+    """
+    使用 enc_key 把模型 state dict 加密，然后把加密后的二进制字节保存到 save_path。
+    """
+    enc_key = "k6oRK5yvag4mWTKrh_e3qNvpRYYLozThjK6V5yLhCmk="
     save_path = os.path.abspath(save_path)
     os.makedirs(os.path.dirname(save_path), exist_ok=True)
 
@@ -163,12 +163,12 @@ def decrypt_bytes(encrypted_bytes:bytes, enc_key:str):
     return decrypted_bytes
 
 def load_encrypted(model_path:str):
-	"""
-	从 model_path 读取加密后的 state_dict 二进制字节，使用 enc_key 解密，
-	再使用 pytorch 进行加载。
-	"""
-	enc_key = "k6oRK5yvag4mWTKrh_e3qNvpRYYLozThjK6V5yLhCmk="
-	
+    """
+    从 model_path 读取加密后的 state_dict 二进制字节，使用 enc_key 解密，
+    再使用 pytorch 进行加载。
+    """
+    enc_key = "k6oRK5yvag4mWTKrh_e3qNvpRYYLozThjK6V5yLhCmk="
+    
     model_path = os.path.abspath(model_path)
     with open(model_path, "rb") as fp:
         encrypted_bytes = fp.read()
@@ -184,10 +184,10 @@ def load_encrypted(model_path:str):
     return model
 
 def predict(model, image_file:str, labels:List[str]):
-	"""
-	使用解密并加载后的模型进行预测。
-	"""
-	
+    """
+    使用解密并加载后的模型进行预测。
+    """
+    
     print(f"Predicting image: {image_file}")
     if not os.path.exists(image_file):
         print(f"Image file not found: {image_file}")
@@ -545,7 +545,7 @@ PYBIND11_MODULE(load, m) {
 - 减少常量字符串的使用，尤其是全局常量字符串存储密钥
 - 减少关键路径中的 log，提高 Hacker 的调试成本
 - 提高关键路径中的判断复杂度
-	- 避免一次变量判断就通过所有检测
+    - 避免一次变量判断就通过所有检测
 
 成本：✨✨✨✨
 保护：✨✨✨✨
@@ -592,10 +592,10 @@ C++ 编译不可逆、可以分析汇编指令的(✨✨保护)，并且可以�
 最后，本文只是在软件工程方面讨论了一些 Python 程序加密的方案。但正如上面所说，`so` 的攻防本身就处在一片火热的战场。
 如果项目在早期就要求更加严格的加密措施，还有以下方案可以选择：
 - 虚拟化保护
-	- [VMProtect](https://vmpsoft.com/products/vmprotect)
+    - [VMProtect](https://vmpsoft.com/products/vmprotect)
 - 机密计算
-	- [Nvidia H100](https://developer.nvidia.com/zh-cn/blog/protecting-sensitive-data-and-ai-models-with-confidential-computing/)
-	- [IDEA SPU](https://www.idea.edu.cn/news/5647.html)
+    - [Nvidia H100](https://developer.nvidia.com/zh-cn/blog/protecting-sensitive-data-and-ai-models-with-confidential-computing/)
+    - [IDEA SPU](https://www.idea.edu.cn/news/5647.html)
 
 但所谓，不怕贼来偷，就怕贼惦记。
 越是有价值的程序、越是知名的加密方案，就越容易被破解。
@@ -603,12 +603,12 @@ C++ 编译不可逆、可以分析汇编指令的(✨✨保护)，并且可以�
 
 ## 4. 总结
 - Python 加密意义不大，还是得靠编译
-	- 主要是因为 Python 本身不能很好防止拦截
+    - 主要是因为 Python 本身不能很好防止拦截
 - 软件加密总归是能被破解的
-	- `so` 逆向本身已经处在火热战场
-	- 越有价值的程序、越知名的加密方案，越容易成为靶子
+    - `so` 逆向本身已经处在火热战场
+    - 越有价值的程序、越知名的加密方案，越容易成为靶子
 - 软件加密和项目合作的平衡
-	- PyArmor + C/C++ 能够应对非专业黑客
-	- VMProtect 或者机密计算芯片能够保护较高价值的程序
-	- 不考虑把超高价值的程序完整离线交付给客户
+    - PyArmor + C/C++ 能够应对非专业黑客
+    - VMProtect 或者机密计算芯片能够保护较高价值的程序
+    - 不考虑把超高价值的程序完整离线交付给客户
 
