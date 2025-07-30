@@ -1,6 +1,6 @@
 ---
 title: 做了一个叫 ChirpChirp 的小工具
-date: 2025-07-30 15：37：00
+date: 2025-07-30 15:37:00
 categories:
   - 产品
 tags:
